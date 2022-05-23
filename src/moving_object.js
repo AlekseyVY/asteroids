@@ -1,4 +1,5 @@
 function MovingObject(dto) {
+    this.id = Math.floor(Math.random() * 100000);
     this.pos = dto.pos;
     this.vel = dto.vel;
     this.radius = dto.radius;
@@ -25,8 +26,7 @@ MovingObject.prototype.wrap = function() {
 }
 
 MovingObject.prototype.isCollidedWith = function(otherObject) {
-    const dist = Math.hypot(this.pos[0] - otherObject.pos[0], this.pos[0] - otherObject.pos[1]);
-    if(dist <= this.radius + otherObject.radius) console.log(dist, 'COLLISION')
+    const dist = Math.hypot(this.pos[0] - otherObject.pos[0], this.pos[1] - otherObject.pos[1]);
     return dist <= this.radius * 2;
 
 }

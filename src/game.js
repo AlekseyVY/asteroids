@@ -44,9 +44,13 @@ Game.prototype.moveObjects = function() {
 Game.prototype.checkCollisions = function() {
     this.asteroids.forEach((parent, idx_p) => {
         this.asteroids.forEach((child, idx_c) => {
-            let tmp;
+            let tmp = false;
             if(idx_p !== idx_c) tmp = parent.isCollidedWith(child);
-            if(tmp) alert('COLLISION');
+            if(tmp) {
+                this.remove(parent);
+                this.remove(child);
+                console.log('REMOVED')
+            }
         })
     })
 }
@@ -56,7 +60,11 @@ Game.prototype.step = function() {
     this.checkCollisions();
 }
 
-
+Game.prototype.remove = function(removeObj) {
+    this.asteroids = this.asteroids.filter((asteroid) => {
+        if(asteroid.id !== removeObj.id) return asteroid;
+    })
+}
 
 
 module.exports = Game;
