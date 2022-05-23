@@ -24,4 +24,11 @@ MovingObject.prototype.wrap = function() {
     this.pos[1] = ((this.pos[1] % this.canvas.height) + this.canvas.height) % this.canvas.height;;
 }
 
+MovingObject.prototype.isCollidedWith = function(otherObject) {
+    const dist = Math.hypot(this.pos[0] - otherObject.pos[0], this.pos[0] - otherObject.pos[1]);
+    if(dist <= this.radius + otherObject.radius) console.log(dist, 'COLLISION')
+    return dist <= this.radius * 2;
+
+}
+
 module.exports = MovingObject;

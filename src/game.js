@@ -41,6 +41,21 @@ Game.prototype.moveObjects = function() {
     })
 }
 
+Game.prototype.checkCollisions = function() {
+    this.asteroids.forEach((parent, idx_p) => {
+        this.asteroids.forEach((child, idx_c) => {
+            let tmp;
+            if(idx_p !== idx_c) tmp = parent.isCollidedWith(child);
+            if(tmp) alert('COLLISION');
+        })
+    })
+}
+
+Game.prototype.step = function() {
+    this.moveObjects();
+    this.checkCollisions();
+}
+
 
 
 

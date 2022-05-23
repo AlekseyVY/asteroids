@@ -9,7 +9,7 @@ function GameView(ctx, canvas, asteroids) {
 }
 
 GameView.prototype.start = function() {
-    this.game.moveObjects();
+    this.game.step();
     this.game.draw();
     requestAnimationFrame(() => {
         this.start();
